@@ -15,6 +15,10 @@ body {
     padding: 20px;
 }
 
+p {
+	margin-bottom: 1em;
+}
+
 h1, h2 {
     font-family: 'Pacifico', serif;
 }
@@ -37,6 +41,11 @@ h2 {
 .row {
 	min-width: 600px;
 }
+.row:after {
+	content: " ";
+	display: table;
+	clear: both;
+}
 
 .col-left {
 	background-image: url(../img/soccer.png);
@@ -52,4 +61,15 @@ h2 {
 	background-image: url(../img/photos.png);
 	background-repeat: no-repeat;
 	padding-left: 80px;
+}
+.after {
+	clear: both;
+}
+
+@media (max-width: 767px) {
+	.col {
+		float: none;
+		width: 100%;
+	}
+
 }
