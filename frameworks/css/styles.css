@@ -4,3 +4,10 @@ the styles defined by Bootstrap */
 /* no need for a reset.css here, as Bootstrap already includes 
 those resets in its own stylesheet */ 
 
+.alert-danger {
+	border-left: 2px solid #F00;
+	background-image: url(../img/danger.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 40px;
+}
