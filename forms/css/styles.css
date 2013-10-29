@@ -1,1 +1,11 @@
 /* styles for HTML forms demo */
+
+.signup-form input,
+.signup-form label {
+	display: block;
+}
+
+.signup-form input[type='checkbox'],
+.signup-form input[type='radio'] {
+	display: inline;
+}

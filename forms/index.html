@@ -15,7 +15,32 @@
             <label>Search:
                 <input type="search" name="q" autofocus required placeholder="search for...">
             </label>
+            <input type="hidden" name="as_sitesearch" value="ischool.uw.edu">
             <button type="submit">Search</button>
+        </form>
+
+        <h2>POST Form</h2>
+
+        <form method="POST" action="https://courses.washington.edu/info343/echo/" class="signup-form">
+            <input type="text" name="name" placeholder="full name..." required>
+            <input type="email" name="email" placeholder="email address..." required>
+
+            <label>
+                <input type="checkbox" name="spam" checked> Share your information with everyone?
+            </label>
+
+            <label>
+                <input type="radio" name="status" value="s"> Student 
+            </label>
+            <label>
+                <input type="radio" name="status" value="f"> Faculty 
+            </label>
+
+            <select name="state">
+                <option value="" disabled selected>please select a state...</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
         </form>
 
 
