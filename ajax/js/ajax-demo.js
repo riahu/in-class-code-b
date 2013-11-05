@@ -15,6 +15,8 @@
 // https://opendata.socrata.com/    (general)
 // https://data.seattle.gov/        (Seattle specific)
 
+// JSONP example
+// https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=processJSON&format=json
 
 
 
