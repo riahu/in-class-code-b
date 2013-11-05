@@ -18,9 +18,35 @@
 // JSONP example
 // https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=processJSON&format=json
 
+$(function(){
+	//doc is ready manipulation
+	$('.call-server-button').click(function(){
+		jQuery.getJSON('https://courses.washington.edu/info343/ajax/test.php', 
+			function(data){
+				$('.server-message').html(data.message);
+		});
+	});
 
+	jQuery.getJSON('https://opendata.socrata.com/resource/ed74-c6ni.json', renderSongs);
+});
 
+function renderSongs(songs) {
+	var idx;
+	var song;
+	var template = $('.template');
+	var clonedTemplate;
+	var container = $('.songs');
 
+	for (idx = 0; idx < songs.length; ++idx) {
+		song = songs[idx];
+		clonedTemplate = template.clone();
+		clonedTemplate.find('.title').html(song.title);
+		clonedTemplate.find('.artist').html(song.artist);
+
+		clonedTemplate.removeClass('template');
+		container.append(clonedTemplate);
+	}
+}
 
 
 
