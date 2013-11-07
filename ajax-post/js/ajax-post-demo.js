@@ -32,3 +32,16 @@ $(document).ajaxError(function(event, jqXHR, err){
     alert(msg);
 });
 
+$(function(){
+    $('.send-server').click(function(){
+        var postData = {};
+        postData.first = htmlEncode($('.first').val());
+        postData.last = htmlEncode($('.last').val());
+
+        var postString = JSON.stringify(postData);
+        $.post('https://courses.washington.edu/info343/ajax/sayhello/', postString, function(data){
+            $('.response-message').html(data.message);
+        });
+
+    });
+});
