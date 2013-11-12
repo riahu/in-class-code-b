@@ -28,9 +28,16 @@ function createPerson(name, alive) {
 
         isAlive: function() {
             return alive;
+        },
+        
+        kill: function() {
+            alive = false;
         }        
     }
 }
+
+var p = createPerson('Dr Stearns', true);
+describePerson(p);
 
 function createInigo(alive) {
     var i = createPerson('Inigo Montoya', alive);
@@ -51,3 +58,7 @@ var inigo = createInigo(true);
 describePerson(andre);
 describePerson(inigo);
 
+var i2 = createInigo(true);
+describePerson(i2);
+i2.kill();
+describePerson(i2);

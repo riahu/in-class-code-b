@@ -40,6 +40,10 @@ function makeNamed(obj, name) {
     return obj;
 }
 
+var x = {};
+makeNamed(x, 'foo');
+addOutput(x.introduce());
+
 function makeVital(obj, alive) {
     //add isAlive() and kill() methods
     //note that 'alive' stays private
