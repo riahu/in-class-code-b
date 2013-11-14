@@ -25,7 +25,7 @@ var Tasks = {
 		var task;		//current task
 
 		for (idx = 0; idx < this.tasks.length; ++idx) {
-			task = tasks[idx];
+			task = this.tasks[idx];
 			if (!task.done)
 				undoneTasks.push(task);
 		}
@@ -40,5 +40,5 @@ function createTasksModel(config) {
 	apply(config, tasksModel);
 
 	tasksModel.tasks = tasksModel.tasks || [];
-	return tasksModel;
+	return makeEventSource(tasksModel);
 }

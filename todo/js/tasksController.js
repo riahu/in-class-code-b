@@ -16,5 +16,14 @@ $(function(){
 		container: $('.tasks-container')
 	});
 
-	
+	var newTaskView = createNewTaskView({
+		model: tasksModel,
+		form: $('.new-task-form')
+	});
+
+	$('.btn-remove-done').click(function(){
+		tasksModel.removeDone();
+	});
+
+
 }); //doc ready
