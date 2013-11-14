@@ -1,0 +1,5 @@
+/*
+    TasksModel
+
+    Model object representing a list of tasks
+*/
