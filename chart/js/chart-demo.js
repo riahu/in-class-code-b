@@ -19,6 +19,15 @@ var chartData = {
 };
 
 
+var beefConsumption = {
+    labels: ["USA", "EU", "China", "Brazil", "Argentina", "Mexico", "Russia", "India", "Japan", "Canada", "Australia", "All Others"],
+    datasets: [
+        {
+            data: [12584, 8146, 6276, 6445, 2479, 2380, 2379, 1506, 1321, 1046, 712, 4731]
+        }
+    ]
+};
+
 //doc ready function
 $(function(){
 
