@@ -1,3 +1,11 @@
+/*
+    TemplateView
+
+    Simple template view class that can merge a model with a Mustache
+    template. For info on Mustache templates, see https://github.com/janl/mustache.js.
+    This view will listen for change, reset, and add events raised by the model
+    and automatically re-render.
+*/
 
 "use strict;"
 
