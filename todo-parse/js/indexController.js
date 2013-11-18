@@ -4,6 +4,8 @@
 //doc ready
 $(function(){
 
+    var tasksContainer = $('.tasks-container');
+
     //get the current Parse user
     var currentUser = Parse.User.current();
 
@@ -24,14 +26,27 @@ $(function(){
     var taskView = createTaskView({
         model: tasks,
         template: $('#task-item-template').html(),
-        container: $('.tasks-container')
+        container: tasksContainer
     });
 
     //fetch the tasks for the current user
     //this is done asynchronously, and the model
     //will trigger an event when its done fetching
     //causing the TaskView to automatically render
-    tasks.fetch();
+    //unfortunately, Parse collections don't yet
+    //trigger the 'request' event at the start of the
+    //fetch, so we have to provide the visual feedback
+    //here by adding the working class and removing
+    //it again in the success handler
+    tasksContainer.addClass('working');
+    tasks.fetch({
+        success: function() {
+            tasksContainer.removeClass('working');
+        },
+        error: function(collection, error) {
+            $('.error-message').html(error.description).fadeIn(300);
+        }
+    });
 
     //create the new task view, passing new task model
     //for this, we can just use our standard FormView
@@ -49,6 +64,10 @@ $(function(){
         //set the userid attribute to the current user's ID
         newTask.set('userid', currentUser.id);
 
+        //set an ACL on this object so that only the current
+        //user is allowed to read or modify it
+        newTask.setACL(new Parse.ACL(currentUser));
+
         //save it
         var button = $(this);
         button.addClass('working');
@@ -61,9 +80,10 @@ $(function(){
                 newTaskView.setModel(new Task());
 
                 button.removeClass('working');
-            } //success()
-
-            //TODO: add error handler
+            }, //success()
+            error: function(object, error) {
+                $('.error-message').html(error.description).fadeIn(300);
+            }
         });
     });
 
@@ -71,11 +91,10 @@ $(function(){
     //a refresh of the TaskList, as it will automatically
     //filter out tasks already marked as done
     $('.btn-remove-done').click(function(){
-        var button = $(this);
-        button.addClass('working');
+        tasksContainer.addClass('working');
         tasks.fetch({
             success: function(){
-                button.removeClass('working');
+                tasksContainer.removeClass('working');
             }
         });
     });

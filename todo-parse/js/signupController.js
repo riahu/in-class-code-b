@@ -16,10 +16,6 @@ $(function(){
         //use email attribute for username
         user.set('username', user.get('email'));
 
-        //add a blank ACL so that other users can't
-        //read the attributes saved with this user
-        user.set('ACL', new Parse.ACL());
-
         user.signUp(null, {
             success: function(user) {
                 //redirect to home page
